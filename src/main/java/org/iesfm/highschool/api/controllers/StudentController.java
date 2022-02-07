@@ -35,7 +35,9 @@ public class StudentController {
             @PathVariable("groupId") int groupId,
             @RequestBody StudentApi student
     ) {
+        //Se convierte a Api
         Student st = convertToModel(student, groupId);
+        //Se inserta en RestService
         if (!studentService.insert(st)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "");
         }
